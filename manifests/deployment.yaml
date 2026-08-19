@@ -4,7 +4,7 @@ metadata:
   name: axion-ingestion-service
   namespace: axion-app
 spec:
-  replicas: 2
+  replicas: 1
 
   strategy:
     type: RollingUpdate
@@ -25,6 +25,23 @@ spec:
     spec:
       containers:
       - name: axion-ingestion-service
-        image: acrtodoappjay.azurecr.io/axion-ingestion-service:v1
+        image: acrtodoappjay.azurecr.io/axion-ingestion-service:v2
         ports:
         - containerPort: 8000
+        volumeMounts:
+        - name: secrets-store-ingestion
+          mountPath: "/mnt/secrets-store"
+          readOnly: true
+        env:
+        - name: API--URL
+          valueFrom:
+            secretKeyRef:
+              name: azure-secret
+              key: api-url
+      volumes:
+      - name: secrets-store-ingestion
+        csi:
+          driver: secrets-store.csi.k8s.io
+          readOnly: true
+          volumeAttributes:
+            secretProviderClass: "azure-kv"
