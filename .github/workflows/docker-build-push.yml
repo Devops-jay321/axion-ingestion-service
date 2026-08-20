@@ -13,7 +13,7 @@ jobs:
 
     env:
       IMAGE_NAME: axion-ingestion-service
-      IMAGE_TAG: v2
+      IMAGE_TAG: v3
       ACR_NAME: acrtodoappjay
       ACR_LOGIN_SERVER: acrtodoappjay.azurecr.io
 
