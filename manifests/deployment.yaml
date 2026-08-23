@@ -25,7 +25,7 @@ spec:
     spec:
       containers:
       - name: axion-ingestion-service
-        image: acrtodoappjay.azurecr.io/axion-ingestion-service:v2
+        image: acrtodoappjay.azurecr.io/axion-ingestion-service:v3
         ports:
         - containerPort: 8000
         volumeMounts:
@@ -33,11 +33,11 @@ spec:
           mountPath: "/mnt/secrets-store"
           readOnly: true
         env:
-        - name: API--URL
+        - name: DATABASE_URL
           valueFrom:
             secretKeyRef:
               name: azure-secret
-              key: api-url
+              key: db-url
       volumes:
       - name: secrets-store-ingestion
         csi:
