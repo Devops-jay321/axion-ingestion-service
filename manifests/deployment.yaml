@@ -28,6 +28,13 @@ spec:
         image: acrtodoappjay.azurecr.io/axion-ingestion-service:v3
         ports:
         - containerPort: 8000
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
         volumeMounts:
         - name: secrets-store-ingestion
           mountPath: "/mnt/secrets-store"
