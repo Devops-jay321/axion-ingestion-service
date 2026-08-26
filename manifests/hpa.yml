@@ -10,7 +10,7 @@ spec:
     name: axion-ingestion-service
 
   minReplicas: 1
-  maxReplicas: 30
+  maxReplicas: 5
 
   metrics:
     - type: Resource
@@ -18,7 +18,7 @@ spec:
         name: cpu
         target:
           type: Utilization
-          averageUtilization: 1
+          averageUtilization: 50
 
   behavior:
     scaleUp:
@@ -32,5 +32,5 @@ spec:
       stabilizationWindowSeconds: 300
       policies:
         - type: Percent
-          value: 60
+          value: 50
           periodSeconds: 60
