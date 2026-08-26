@@ -10,7 +10,7 @@ spec:
     name: axion-ingestion-service
 
   minReplicas: 1
-  maxReplicas: 5
+  maxReplicas: 30
 
   metrics:
     - type: Resource
